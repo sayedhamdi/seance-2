@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      /*let equationSecondDegree = (a, b, c) => {
+              let d = Math.pow(b, 2) - 4 * a * c;
+
+              // delta negatif
+              if (d < 0) {
+                return "impossible";
+              }
+
+              // delta nulle
+              if (d == 0) {
+                let x = -b / (2 * a);
+                return `solution double : x1 = x2 = ${x}`;
+              }
+              // delta positif
+              let x1 = (-b - Math.sqrt(d)) / (2 * a);
+              let x2 = (-b + Math.sqrt(d)) / (2 * a);
+              return `les solutions sont : x1 = ${x1} ; x2 = ${x2}`;
+            };
+
+            console.log(equationSecondDegree(1, 2, 1)); // double
+            console.log(equationSecondDegree(10, 1, 1)); // impossible
+            console.log(equationSecondDegree(1, 10, 1)); // taw nehsboha  x1 : -9.898979485566356  // x2 : -0.10102051443364424
+      */
+      // PGCD
+
+      let divisors = (x) => {
+        // this return any diviors of the value x
+        let diviseurs = [];
+        for (let i = 1; i <= x / 2; i++) {
+          if (x % i == 0) {
+            // el i eli tet9sem
+            diviseurs.push(i);
+          }
+        }
+        diviseurs.push(x);
+        return diviseurs;
+      };
+      //console.log(divisors(5));
+      //console.log(divisors(15));
+      //console.log(divisors(27));
+
+      // commun
+
+      let commun = (t1, t2) => {
+        let comm = [];
+        for (let i = 0; i < t1.length; i++) {
+          for (let j = 0; j < t2.length; j++) {
+            if (t1[i] == t2[j]) {
+              comm.push(t1[i]);
+            }
+          }
+        }
+        return comm;
+      };
+      console.log(commun([1, 2, 4], [1, 2, 5])); // [1 , 2]
+      console.log(commun([1, 6, 4], [0, 2, 5])); // []
+
+      // PGCD
+      let pgcd = (a, b) => {
+        // ntalaa f les diviseurs mtaa el a wel b
+        let divsA = divisors(a);
+        let divsB = divisors(b);
+
+        // nekhou fel les diviseurs commun
+        let com = commun(divsA, divsB);
+        // nekhou f akber diviseur
+        pgcdValue = com[com.length - 1];
+        // nraja fel resultat
+        return pgcdValue;
+      };
+
+      // affichage pgcd
+      console.log("-------------PGCD---------------------");
+      console.log(pgcd(5, 15)); // 5
+      console.log(pgcd(7, 21)); // 7
+      // PPCM
+      let ppcm = (a, b) => {
+        if (a > b && a % b == 0) {
+          return a;
+        }
+        if (a < b && b % a == 0) {
+          return b;
+        }
+        let i = 1;
+        while ((i * a) % b != 0) {
+          i++;
+        }
+        console.log(i * a);
+      };
+
+      let ppcmMTaaAbedTefHemfElMATH = (x, y) => {
+        return (x * y) / pgcd(x, y);
+      };
+      console.log(ppcmMTaaAbedTefHemfElMATH(2, 17)); // 34
+      console.log(ppcmMTaaAbedTefHemfElMATH(7, 10)); // 34
+
+      // t1 = [1,2,4] | t2 = [1,2,5] => commun => [1,2]
+    </script>
+  </body>
+</html>

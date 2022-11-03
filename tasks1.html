@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // exercice 1 :
+      function entierEnChaine(x) {
+        if (typeof x != "number") {
+          return "Erreur conversion impossible";
+        }
+        return String(x);
+      }
+
+      console.log(entierEnChaine(5)); //  '5'
+      console.log(entierEnChaine(10)); //  '10'
+      console.log(entierEnChaine(10)); //  error
+
+      // forEach
+      console.log("___________________________________");
+      t = [{ name: "samir" }, [1, 2, 3], 3, "helllo"];
+      t.forEach(afficher);
+
+      function afficher(element) {
+        console.log(element);
+      }
+      // double
+      for (let i = 0; i < t.length; i++) {
+        t[i] = t[i] * 2;
+      }
+
+      console.log(t);
+
+      // a callback function is a function
+      //called inside another function when passed a param
+      let add = (x, y) => x + y;
+      let mult = (x, y) => x * y;
+      function calculer(x, y, callback) {
+        let resultat = callback(x, y);
+        console.log(resultat);
+      }
+
+      calculer(5, 4, add);
+
+      // afficher personne
+      T = [
+        {
+          id: 1,
+          first: "ahmed",
+          last: "ben ali",
+          age: 23,
+          email: "ahmed.benali@gmail.com",
+          address: "Tunis",
+        },
+        {
+          id: 2,
+          first: "aziz",
+          last: "ameri",
+          age: 44,
+          email: "ahmed.benali@gmail.com",
+          address: "Tunis",
+        },
+        {
+          id: 3,
+          first: "khalil",
+          last: "ben lamine",
+          age: 18,
+          email: "ahmed.benali@gmail.com",
+          address: "Tunis",
+        },
+      ];
+
+      for (let i = 0; i < T.length; i++) {
+        console.log(`id:${T[i].id}`);
+        console.log(`first:${T[i].first}`);
+        console.log(`last:${T[i].last}`);
+        console.log(`email:${T[i].email}`);
+        console.log(`address:${T[i].address}`);
+      }
+      console.log("-------------------------");
+
+      let showAUser = (user) => {
+        let { first, last } = user;
+        console.log(`first:${first}`);
+        console.log(`last:${last}`);
+      };
+      console.log(T.forEach(showAUser));
+
+      let notes = [1, 2, 3, 4, 5];
+
+      let moyenne = notes.reduce((total, element) => {
+        return total + element / notes.length;
+      }, 0);
+      // .map
+      console.log(moyenne);
+    </script>
+  </body>
+</html>
